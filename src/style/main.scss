@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@500&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -15,6 +17,7 @@ body{
 }
 
 .app{
+    font-family: 'Comfortaa', cursive;
     background-color: rgb(243, 229, 36);
     background-image: linear-gradient(rgb(243, 195, 36), rgb(226, 81, 81));
     background-size: auto;

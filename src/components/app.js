@@ -49,7 +49,7 @@ export default function App(){
           />
         </div>
         {(typeof weather.main != "undefined") ? (
-          <div>
+          <div classNmae="info-wrapper">
             <div className="location-wrapper">
               <div className="location">
                 {weather.name}, {weather.sys.country}
