@@ -15,12 +15,13 @@ body{
 }
 
 .app{
-    background-image: url('./images/cold-background.jpg');
-    background-size: cover;
+    background-color: rgb(243, 229, 36);
+    background-image: linear-gradient(rgb(243, 195, 36), rgb(226, 81, 81));
+    background-size: auto;
     background-position: bottom;
     transition: 0.4 ease-out;
-    height: 800px;
-    width: 400px;
+    height: 1000px;
+    width: 100%;
     background-repeat: no-repeat;
 }
 
@@ -30,11 +31,16 @@ body{
 
 .search-box{
     width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
     // margin: 0 0 75px;
 
     .search-bar{
         display: block;
-        width: 100%;
+        text-align: center;
+        width: 50%;
         height: 50px;
         appearance: none;
         outline: none;
