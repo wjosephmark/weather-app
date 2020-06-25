@@ -4,7 +4,7 @@ export default function App(){
 
   const [query, setQuery] = useState('')
   const [weather, setWeather] = useState({})
-  const [sunny, setSunny] = useState('')
+  const [skies, setSkies] = useState('')
 
   const search = e => {
     if(e.key === 'Enter') {
@@ -13,17 +13,21 @@ export default function App(){
         .then(result => {
           setWeather(result)
           setQuery('')
-          setSunny(result.weather[0].main)
+          setSkies(result.weather[0].main)
           console.log(result)
         })
     }
   }
 
   const displayWeatherImage = () => {
-    if(sunny === "Clouds"){
+    if(skies === "Clouds"){
       return(
         <img className="weather-image" src="http://assets.stickpng.com/thumbs/580b585b2edbce24c47b2639.png" />
         // <h1>Hello</h1>
+      )
+    } else if(skies === "Clear"){
+      return(
+        <img className="weather-image" src="http://assets.stickpng.com/thumbs/580b585b2edbce24c47b2710.png" />
       )
     }
   }
@@ -76,13 +80,14 @@ export default function App(){
             <div className="temp-wrapper">
 
               <div className="temp">
-                {Math.round(weather.main.temp)}°f
+                {Math.round(weather.main.temp)}°F
               </div>
 
             </div>
 
             <div className="weather">
               {displayWeatherImage()}
+              {weather.weather[0].main}
             </div>
 
           </div>
