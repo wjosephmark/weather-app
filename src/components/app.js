@@ -49,21 +49,27 @@ export default function App(){
           />
         </div>
         {(typeof weather.main != "undefined") ? (
-          <div classNmae="info-wrapper">
+          <div className="info-wrapper">
             <div className="location-wrapper">
+              
               <div className="location">
                 {weather.name}, {weather.sys.country}
               </div>
-              <div className="date">{dateBuilder(new Date())}</div>
-            </div>
-            <div className="weather-wrapper">
-              <div className="temp">
-                {Math.round(weather.main.temp)}°f
+
+              <div className="date">
+                {dateBuilder(new Date())}
               </div>
-              <div className="weather">
-                {weather.weather[0].main}
-              </div>
+
             </div>
+
+            <div className="temp">
+              {Math.round(weather.main.temp)}°f
+            </div>
+
+            <div className="weather">
+              {weather.weather[0].main}
+            </div>
+
           </div>
         ) : ('')}
       </main>
