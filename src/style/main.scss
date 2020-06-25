@@ -1,28 +1,52 @@
-html {
-    font-size: 62.5%; // 1rem is 10px
-}
-
-*,
-*::after,
-*::before {
+* {
     margin: 0;
     padding: 0;
-    box-sizing: inherit;
-    font-family: 'montserrat';
+    box-sizing: border-box;
 }
 
-body {
-    overflow-x: hidden;
-    font-weight: normal;
-
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
-    -webkit-tap-highlight-color: transparent;
+body{
+    font-family: 'monseratt', sans-serif;
 }
 
-.app {
-    margin-top: 2rem;
-    display: grid;
-    justify-items: center;
+.app-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.app{
+    background-image: url('./images/cold-background.jpg');
+    background-size: cover;
+    background-position: bottom;
+    transition: 0.4 ease-out;
+    height: 800px;
+    width: 400px;
+    background-repeat: no-repeat;
+}
+
+.app.warm{
+    background-image: url("./images/warm-background.jpg");
+}
+
+.search-box{
+    width: 100%;
+    // margin: 0 0 75px;
+
+    .search-bar{
+        display: block;
+        width: 100%;
+        height: 50px;
+        appearance: none;
+        outline: none;
+        border: none;
+        background-color: rgba(255, 255, 255, 0.5);
+        border-radius: 16px;
+        box-shadow: 0px 5px rgba(0, 0, 0, 0.2);
+
+        &:focus{
+            background-color: rgba(255, 255, 255, 0.75);
+            transition: ease-in-out .1s;
+        }
+        
+    }
 }
