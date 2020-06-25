@@ -4,6 +4,7 @@ export default function App(){
 
   const [query, setQuery] = useState('')
   const [weather, setWeather] = useState({})
+  const [sunny, setSunny] = useState('')
 
   const search = e => {
     if(e.key === 'Enter') {
@@ -12,8 +13,18 @@ export default function App(){
         .then(result => {
           setWeather(result)
           setQuery('')
+          setSunny(result.weather[0].main)
           console.log(result)
         })
+    }
+  }
+
+  const displayWeatherImage = () => {
+    if(sunny === "Clouds"){
+      return(
+        <img className="weather-image" src="http://assets.stickpng.com/thumbs/580b585b2edbce24c47b2639.png" />
+        // <h1>Hello</h1>
+      )
     }
   }
 
@@ -51,23 +62,27 @@ export default function App(){
         {(typeof weather.main != "undefined") ? (
           <div className="info-wrapper">
             <div className="location-wrapper">
-              
+
               <div className="location">
                 {weather.name}, {weather.sys.country}
               </div>
-
+            
               <div className="date">
                 {dateBuilder(new Date())}
               </div>
 
             </div>
 
-            <div className="temp">
-              {Math.round(weather.main.temp)}°f
+            <div className="temp-wrapper">
+
+              <div className="temp">
+                {Math.round(weather.main.temp)}°f
+              </div>
+
             </div>
 
             <div className="weather">
-              {weather.weather[0].main}
+              {displayWeatherImage()}
             </div>
 
           </div>
