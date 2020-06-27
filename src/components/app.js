@@ -24,11 +24,13 @@ export default function App(){
   
   const handleClassName = () => {
     if(responseRecieved === true){
-      if(weather.main.temp < 50) {
+      if(icon.includes('n')) {
+        return("app-night")
+      } else if (weather.main.temp < 50) {
         return("app-cold")
-      } 
-    } else if (icon.includes('n')) {
-      return("app-night")
+      } else {
+        return('app')
+      }
     } else {
       return('app')
     }
