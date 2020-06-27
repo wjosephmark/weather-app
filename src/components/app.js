@@ -4,7 +4,7 @@ export default function App(){
 
   const [query, setQuery] = useState('')
   const [weather, setWeather] = useState({})
-  const [skies, setSkies] = useState('')
+  const [icon, setIcon] = useState('')
 
   const search = e => {
     if(e.key === 'Enter') {
@@ -13,28 +13,15 @@ export default function App(){
         .then(result => {
           setWeather(result)
           setQuery('')
+          setIcon(result.weather[0].icon)
           setSkies(result.weather[0].description)
           console.log(result)
-          console.log(result.weather[0].description)
         })
     }
   }
 
   const displayWeatherImage = () => {
-    if(skies === "Clouds"){
-      return(
-        <img className="weather-image" src="http://assets.stickpng.com/thumbs/580b585b2edbce24c47b2639.png" />
-        // <h1>Hello</h1>
-      )
-    } else if(skies === "Clear"){
-      return(
-        <img className="weather-image" src="https://lh3.googleusercontent.com/proxy/T36WuGYfY86TmoopZqlZcuK0oWnIvbrpeMgfjxsuimqmiSZuWLWoAmdtB4Q2Fcbs_5yA4HfEpOxD3NdThMI4hcCLFMxN0TU" />
-      )
-    } else if(skies === "Rain"){
-      return(
-        <img className="weather-image" src="http://assets.stickpng.com/thumbs/580b585b2edbce24c47b2710.png" />
-      )
-    }
+    return(<img src={`http://openweathermap.org/img/wn/${icon}@2x.png`} />)
   }
 
   const api = {
