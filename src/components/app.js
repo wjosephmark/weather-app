@@ -27,6 +27,10 @@ export default function App(){
       )
     } else if(skies === "Clear"){
       return(
+        <img className="weather-image" src="https://lh3.googleusercontent.com/proxy/T36WuGYfY86TmoopZqlZcuK0oWnIvbrpeMgfjxsuimqmiSZuWLWoAmdtB4Q2Fcbs_5yA4HfEpOxD3NdThMI4hcCLFMxN0TU" />
+      )
+    } else if(skies === "Rain"){
+      return(
         <img className="weather-image" src="http://assets.stickpng.com/thumbs/580b585b2edbce24c47b2710.png" />
       )
     }
@@ -83,12 +87,13 @@ export default function App(){
                 {Math.round(weather.main.temp)}°F
               </div>
 
+              <div className="weather">
+                {displayWeatherImage()}
+                {weather.weather[0].main}
+              </div>
+
             </div>
 
-            <div className="weather">
-              {displayWeatherImage()}
-              {weather.weather[0].main}
-            </div>
 
           </div>
         ) : ('')}
