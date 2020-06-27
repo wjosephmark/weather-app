@@ -21,6 +21,46 @@ export default function App(){
       })
     }
   }
+
+  const displayContent = () => {
+    if(typeof weather.main != "undefined"){
+      return(
+        <div className="info-wrapper">
+          <div className="location-wrapper">
+
+            <div className="location">
+              {weather.name}, {weather.sys.country}
+            </div>
+          
+            <div className="date">
+              {dateBuilder(new Date())}
+            </div>
+
+          </div>
+
+          <div className="temp-wrapper">
+
+            <div className="temp">
+              {Math.round(weather.main.temp)}°F
+            </div>
+
+            <div className="weather">
+              {displayWeatherImage()}
+              {weather.weather[0].description}
+            </div>
+
+          </div>
+
+        </div>
+      )
+    } else if(weather.cod === '404' ){
+      return(
+        <div className="error-message">
+          <h1>Location Not Found :(</h1>
+        </div>
+      )
+    }
+  }
   
   const handleClassName = () => {
     if(responseRecieved === true){
@@ -71,36 +111,7 @@ export default function App(){
             onKeyPress={search}
           />
         </div>
-        {(typeof weather.main != "undefined") ? (
-          <div className="info-wrapper">
-            <div className="location-wrapper">
-
-              <div className="location">
-                {weather.name}, {weather.sys.country}
-              </div>
-            
-              <div className="date">
-                {dateBuilder(new Date())}
-              </div>
-
-            </div>
-
-            <div className="temp-wrapper">
-
-              <div className="temp">
-                {Math.round(weather.main.temp)}°F
-              </div>
-
-              <div className="weather">
-                {displayWeatherImage()}
-                {weather.weather[0].description}
-              </div>
-
-            </div>
-
-
-          </div>
-        ) : ('')}
+        {displayContent()}
       </main>
     </div>
   );
