@@ -15,9 +15,9 @@ export default function App(){
         setWeather(result)
         setQuery('')
         setIcon(result.weather[0].icon)
-        setSkies(result.weather[0].description)
-        setResponseRecieved(True)
+        setResponseRecieved(true)
         console.log(result)
+        console.log(result.main.temp)
       })
     }
   }
