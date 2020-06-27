@@ -13,8 +13,9 @@ export default function App(){
         .then(result => {
           setWeather(result)
           setQuery('')
-          setSkies(result.weather[0].main)
+          setSkies(result.weather[0].description)
           console.log(result)
+          console.log(result.weather[0].description)
         })
     }
   }
@@ -89,7 +90,7 @@ export default function App(){
 
               <div className="weather">
                 {displayWeatherImage()}
-                {weather.weather[0].main}
+                {weather.weather[0].description}
               </div>
 
             </div>
