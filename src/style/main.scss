@@ -16,6 +16,19 @@ body{
     justify-content: center;
 }
 
+.app-cold{
+    font-family: 'Comfortaa', cursive;
+    background-color: rgb(168, 247, 250);
+    background-image: linear-gradient(rgb(168, 247, 250), rgb(48, 129, 223));
+    background-size: auto;
+    background-position: bottom;
+    transition: 0.4 ease-out;
+    height: 1000px;
+    width: 100%;
+    background-repeat: no-repeat;
+
+}
+
 .app{
     font-family: 'Comfortaa', cursive;
     background-color: rgb(243, 229, 36);

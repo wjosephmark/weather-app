@@ -5,18 +5,32 @@ export default function App(){
   const [query, setQuery] = useState('')
   const [weather, setWeather] = useState({})
   const [icon, setIcon] = useState('')
-
+  const [responseRecieved, setResponseRecieved] = useState(false)
+  
   const search = e => {
     if(e.key === 'Enter') {
       fetch(`${api.base}weather?q=${query}&units=imperial&APPID=${api.key}`)
-        .then(res => res.json())
-        .then(result => {
-          setWeather(result)
-          setQuery('')
-          setIcon(result.weather[0].icon)
-          setSkies(result.weather[0].description)
-          console.log(result)
-        })
+      .then(res => res.json())
+      .then(result => {
+        setWeather(result)
+        setQuery('')
+        setIcon(result.weather[0].icon)
+        setSkies(result.weather[0].description)
+        setResponseRecieved(True)
+        console.log(result)
+      })
+    }
+  }
+  
+  const handleClassName = () => {
+    if(responseRecieved === true){
+      if(weather.main.temp < 50) {
+        return("app-cold")
+      } 
+    } else if (icon.includes('n')) {
+      return("app-night")
+    } else {
+      return('app')
     }
   }
 
@@ -43,13 +57,13 @@ export default function App(){
 
 
   return (
-    <div className="app">
+    <div className={handleClassName()}>
       <main>
         <div className="search-box">
           <input 
             type="text"
             className="search-bar"
-            placeholder="Search..."
+            placeholder="Enter location..."
             onChange={e => setQuery(e.target.value)}
             value={query}
             onKeyPress={search}
